@@ -5,12 +5,26 @@
  */
 package com.utbm.lo54.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author jnoblat
  */
+@Entity
+@Table(name="CLIENT")
 public class Client {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    
+    @Column(name="LASTNAME")
     private String lastName;
     private String firstName;
     private String address;
