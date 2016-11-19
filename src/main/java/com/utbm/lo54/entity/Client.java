@@ -118,6 +118,4 @@ public class Client {
     public void setCourseSession(Collection<Course_session> courseSession) {
         this.courseSession = courseSession;
     }
-    
-    
 }
