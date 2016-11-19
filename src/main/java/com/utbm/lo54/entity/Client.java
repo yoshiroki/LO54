@@ -26,10 +26,20 @@ public class Client {
     
     @Column(name="LASTNAME")
     private String lastName;
+    
+    @Column(name="FIRSTNAME")
     private String firstName;
+    
+    @Column(name="ADDRESS")
     private String address;
+    
+    @Column(name="PHONE")
     private String phone;
+    
+    @Column(name="EMAIL")
     private String email;
+    
+//    @Column(name="LASTNAME")
     private Course_session courseSession;
 
     public Client(String lastName, String firstName, String address, String phone, Course_session courseSession) {
@@ -38,6 +48,15 @@ public class Client {
         this.address = address;
         this.phone = phone;
         this.courseSession = courseSession;
+    }
+    
+    public Client(String lastName, String firstName) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+    }
+
+    public Client() {
+       
     }
 
     public Integer getId() {

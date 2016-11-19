@@ -5,12 +5,25 @@
  */
 package com.utbm.lo54.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author jnoblat
  */
+@Entity
+@Table(name="LOCATION")
 public class Location {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)    
     private Integer id;
+    
+    @Column(name="CITY")
     private String city;
 
     public Location(String city) {

@@ -5,12 +5,23 @@
  */
 package com.utbm.lo54.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author jnoblat
  */
+@Entity
+@Table(name="COURSE")
 public class Course {
+ 
+    @Id
     private String code;
+    
+    @Column(name="TITLE")
     private String title;
 
     public Course(String title) {
