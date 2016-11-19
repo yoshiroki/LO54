@@ -11,8 +11,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.xml.stream.Location;
 
 /**
  *
@@ -32,13 +33,15 @@ public class Course_session {
     @Column(name="END_DATE")
     private Date endDate;
     
-    @Column(name="COURSE_CODE")
-    private String courseCode;
+    @OneToOne
+    @JoinColumn(name="COURSE", referencedColumnName="code")
+    private Course courseCode;
     
-    @Column(name="LOCATION")
-    private Location location;
+    @OneToOne
+    @JoinColumn(name="LOCATION", referencedColumnName="id")
+    private Location_course location;
 
-    public Course_session(Date startDate, Date endDate, String courseCode, Location location) {
+    public Course_session(Date startDate, Date endDate, Course courseCode, Location_course location) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.courseCode = courseCode;
@@ -69,19 +72,19 @@ public class Course_session {
         this.endDate = endDate;
     }
 
-    public String getCourseCode() {
+    public Course getCourseCode() {
         return courseCode;
     }
 
-    public void setCourseCode(String courseCode) {
+    public void setCourseCode(Course courseCode) {
         this.courseCode = courseCode;
     }
 
-    public Location getLocation() {
+    public Location_course getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(Location_course location) {
         this.location = location;
     }
     

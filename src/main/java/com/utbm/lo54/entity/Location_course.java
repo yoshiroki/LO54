@@ -18,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="LOCATION")
-public class Location {
+public class Location_course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)    
     private Integer id;
@@ -26,7 +26,7 @@ public class Location {
     @Column(name="CITY")
     private String city;
 
-    public Location(String city) {
+    public Location_course(String city) {
         this.city = city;
     }
 

@@ -5,11 +5,14 @@
  */
 package com.utbm.lo54.entity;
 
+import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -39,10 +42,11 @@ public class Client {
     @Column(name="EMAIL")
     private String email;
     
-//    @Column(name="LASTNAME")
-    private Course_session courseSession;
+    @OneToMany
+    @JoinColumn(name="COURSE_SESSION", referencedColumnName="id")
+    private Collection<Course_session> courseSession;
 
-    public Client(String lastName, String firstName, String address, String phone, Course_session courseSession) {
+    public Client(String lastName, String firstName, String address, String phone, Collection<Course_session> courseSession) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.address = address;
@@ -107,11 +111,11 @@ public class Client {
         this.email = email;
     }
 
-    public Course_session getCourseSession() {
+    public Collection<Course_session> getCourseSession() {
         return courseSession;
     }
 
-    public void setCourseSession(Course_session courseSession) {
+    public void setCourseSession(Collection<Course_session> courseSession) {
         this.courseSession = courseSession;
     }
     
