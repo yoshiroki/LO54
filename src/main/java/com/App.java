@@ -5,27 +5,18 @@
  */
 package com;
 
-import com.utbm.lo54.entity.Client;
-import com.utbm.lo54.util.HibernateUtil;
-import java.util.List;
-import org.hibernate.Query;
-import org.hibernate.Session;
+import javafx.application.Application;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  *
  * @author avigoure
  */
+@SpringBootApplication
 public class App {
     
     public static void main(String[] args) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		session.beginTransaction();
-                
-		Query q = session.createQuery("from Client");
-		List<Client> client = q.list();
-          
-		session.getTransaction().commit();
-		session.close();
-                System.exit(0);
-	}
+        SpringApplication.run(App.class, args);
+    }
 }
