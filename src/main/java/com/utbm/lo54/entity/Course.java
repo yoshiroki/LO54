@@ -27,6 +27,9 @@ public class Course {
     public Course(String title) {
         this.title = title;
     }
+    public Course() {
+    }
+    
 
     public String getCode() {
         return code;

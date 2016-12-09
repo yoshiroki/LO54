@@ -48,6 +48,9 @@ public class Course_session {
         this.location = location;
     }
 
+    public Course_session() {
+    }
+
     public Integer getId() {
         return id;
     }

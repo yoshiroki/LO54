@@ -26,6 +26,10 @@ public class Location_course {
     @Column(name="CITY")
     private String city;
 
+    public Location_course() {
+     
+    }
+    
     public Location_course(String city) {
         this.city = city;
     }
