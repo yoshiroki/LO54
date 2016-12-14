@@ -3,7 +3,8 @@
     <head>
         <title>Getting Started: Serving Web Content</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link rel="stylesheet" href="/resources/css/bootstrap.min.css"></link>    
+        <link rel="stylesheet" href="/resources/css/bootstrap.min.css"></link>  
+        <link rel="stylesheet" href="/resources/css/bootstrap-select.min.css"></link>    
     </head>
     <body>
         <nav class="navbar navbar-default">
@@ -27,24 +28,39 @@
                 </div>
             </div>
         </nav>
-        
+
         <div class="container">
             <h2>Liste des cours</h2>
-            
-            <select >
-                <option th:each="lstCourse: ${listCourse}">
-                    <span th:text="${lstCourse.title}"/>
-                </option>
-            </select>
-            
-            <select >
-                <option th:each="location: ${listLocation}">
-                    <span th:text="${location.city}"/>
-                </option>
-            </select>
-            dateEnd / dateStart / recherche
-            
-                <table  class="table table-striped">
+
+            <h4>Filtre</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <select class="selectpicker" multiple="" data-live-search="true" title="Choississez un cours" data-selected-text-format="count > 3">
+                        <option th:each="lstCourse: ${listCourse}">
+                        <span th:text="${lstCourse.title}"/>
+                        </option>
+                    </select>
+
+                    <select class="selectpicker" multiple="" data-live-search="true" title="Choississez un lieu" data-selected-text-format="count > 3">
+                        <option th:each="location: ${listLocation}">
+                        <span th:text="${location.city}"/>
+                        </option>
+                    </select>
+                    dateEnd / dateStart / recherche
+                </div>
+            </div>
+
+            <table  class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>lieu</th>
+                        <th>Date de départ</th>
+                        <th>Date de fin</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
                     <tr th:each="course: ${listCourseSession}">
                         <td th:text="${course.courseCode.title}"></td>
                         <td th:text="${course.location.city}"></td>
@@ -56,11 +72,13 @@
                             </div>
                         </td>
                     </tr>
-                </table>
+                </tbody>
+            </table>
         </div>
-        
+
         <script src="/resources/js/jquery.min.js" ></script>
         <script src="/resources/js/bootstrap.min.js" ></script>
+        <script src="/resources/js/bootstrap-select.min.js" ></script>
     </body>
 </html>
 
