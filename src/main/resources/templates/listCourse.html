@@ -26,7 +26,6 @@
                     <ul class="nav navbar-nav">
                         <li><a href="/">Accueil</a></li> 
                         <li class="active"><a href="listCourse">Consultation</a></li>  
-                        <li><a href="addCourseSession">Inscription</a></li> 
                     </ul>
                 </div>
             </div>
@@ -37,17 +36,17 @@
 
             <h4>Filtre</h4>
             <div class="row">
-                <form class="form-inline">
+                <form class="form-inline" action="/listCourse" method="POST">
                     <div class="col-md-12">
-                        <select class="selectpicker" multiple="" data-live-search="true" title="Choississez un cours" data-selected-text-format="count > 3">
-                            <option th:each="lstCourse: ${listCourse}">
+                        <select class="selectpicker" multiple="" data-live-search="true" title="Choississez un cours" data-selected-text-format="count > 3" name="course">
+                            <option th:value="*{lstCourse.Code}" th:each="lstCourse: ${listCourse}">
                             <span th:text="${lstCourse.title}"/>
                             </option>
                         </select>
 
-                        <select class="selectpicker" multiple="" data-live-search="true" title="Choississez un lieu" data-selected-text-format="count > 3">
-                            <option th:each="location: ${listLocation}">
-                            <span th:text="${location.city}"/>
+                        <select class="selectpicker" multiple="" data-live-search="true" title="Choississez un lieu" data-selected-text-format="count > 3" name="location">
+                            <option th:value="*{location.id}" th:each="location: ${listLocation}">
+                                <span th:text="${location.city}"/>
                             </option>
                         </select>
 
@@ -59,7 +58,6 @@
                                 </span>
                             </div>
                         </div>
-
                     </div>
                     <div class="col-md-12 filter-date">
                         <div class="form-group">
@@ -80,7 +78,8 @@
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
-                        </div>                    
+                        </div>   
+                        <button type="submit" class="btn btn-info">Rechercher</button>
                     </div> 
                 </form>
             </div>
