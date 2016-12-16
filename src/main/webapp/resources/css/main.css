@@ -1,4 +1,8 @@
-.filter-date {
+.btn-filter {
     margin-top: 10px;
     margin-bottom:15px;
+}
+
+.list-course .checkbox {
+    margin-top:0;
 }

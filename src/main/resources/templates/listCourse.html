@@ -46,20 +46,10 @@
 
                         <select class="selectpicker" multiple="" data-live-search="true" title="Choississez un lieu" data-selected-text-format="count > 3" name="location">
                             <option th:value="*{location.id}" th:each="location: ${listLocation}">
-                                <span th:text="${location.city}"/>
+                            <span th:text="${location.city}"/>
                             </option>
                         </select>
 
-                        <div class="form-group pull-right">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Rechercher" name="search"/>
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 filter-date">
                         <div class="form-group">
                             <label for="datetimepickerStartCourse">Date de départ</label>
                             <div class='input-group date' id='datetimepickerStartCourse'>                                
@@ -79,7 +69,7 @@
                                 </span>
                             </div>
                         </div>   
-                        <button type="submit" class="btn btn-info">Rechercher</button>
+                        <button type="submit" class="btn btn-info btn-filter">Rechercher</button>
                     </div> 
                 </form>
             </div>
@@ -91,14 +81,20 @@
                         <th>lieu</th>
                         <th>Date de départ</th>
                         <th>Date de fin</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="course: ${listCourseSession}">
+                    <tr class="list-course" th:each="course: ${listCourseSession}">
                         <td th:text="${course.courseCode.title}"></td>
                         <td th:text="${course.location.city}"></td>
                         <td th:text="${course.startDate}"></td>
                         <td th:text="${course.endDate}"></td>
+                        <td>
+                            <div class="checkbox">
+                                <input type="checkbox" name="selectCourse" th:value="*{course.id}"/>
+                            </div>                             
+                        </td>
                     </tr>
                 </tbody>
             </table>
