@@ -5,6 +5,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" href="/resources/css/bootstrap.min.css"></link>  
         <link rel="stylesheet" href="/resources/css/bootstrap-select.min.css"></link>    
+        <link rel="stylesheet" href="/resources/css/bootstrap-datetimepicker.min.css"></link>   
+        <link rel="stylesheet" href="/resources/css/main.css"></link>
     </head>
     <body>
         <nav class="navbar navbar-default">
@@ -35,20 +37,52 @@
 
             <h4>Filtre</h4>
             <div class="row">
-                <div class="col-md-12">
-                    <select class="selectpicker" multiple="" data-live-search="true" title="Choississez un cours" data-selected-text-format="count > 3">
-                        <option th:each="lstCourse: ${listCourse}">
-                        <span th:text="${lstCourse.title}"/>
-                        </option>
-                    </select>
+                <form class="form-inline">
+                    <div class="col-md-12">
+                        <select class="selectpicker" multiple="" data-live-search="true" title="Choississez un cours" data-selected-text-format="count > 3">
+                            <option th:each="lstCourse: ${listCourse}">
+                            <span th:text="${lstCourse.title}"/>
+                            </option>
+                        </select>
 
-                    <select class="selectpicker" multiple="" data-live-search="true" title="Choississez un lieu" data-selected-text-format="count > 3">
-                        <option th:each="location: ${listLocation}">
-                        <span th:text="${location.city}"/>
-                        </option>
-                    </select>
-                    dateEnd / dateStart / recherche
-                </div>
+                        <select class="selectpicker" multiple="" data-live-search="true" title="Choississez un lieu" data-selected-text-format="count > 3">
+                            <option th:each="location: ${listLocation}">
+                            <span th:text="${location.city}"/>
+                            </option>
+                        </select>
+
+                        <div class="form-group pull-right">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Rechercher" name="search"/>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 filter-date">
+                        <div class="form-group">
+                            <label for="datetimepickerStartCourse">Date de départ</label>
+                            <div class='input-group date' id='datetimepickerStartCourse'>                                
+                                <input type='text' class="form-control" name="dateStartCourse"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="datetimepickerEndCourse">Date de fin</label>
+                            <div class='input-group date' id='datetimepickerEndCourse'>
+                                <input type='text' class="form-control" name="dateEndCourse"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>                    
+                    </div> 
+                </form>
             </div>
 
             <table  class="table table-striped">
@@ -58,7 +92,6 @@
                         <th>lieu</th>
                         <th>Date de départ</th>
                         <th>Date de fin</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,19 +100,26 @@
                         <td th:text="${course.location.city}"></td>
                         <td th:text="${course.startDate}"></td>
                         <td th:text="${course.endDate}"></td>
-                        <td>
-                            <div class="checkbox">
-                                <input type="checkbox" th:value="${course.id}" />
-                            </div>
-                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
         <script src="/resources/js/jquery.min.js" ></script>
+        <script src="/resources/js/moment-with-locales.min.js" ></script>
         <script src="/resources/js/bootstrap.min.js" ></script>
         <script src="/resources/js/bootstrap-select.min.js" ></script>
+        <script src="/resources/js/bootstrap-datetimepicker.min.js" ></script>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepickerStartCourse').datetimepicker({
+                    locale: 'fr'
+                });
+                $('#datetimepickerEndCourse').datetimepicker({
+                    locale: 'fr'
+                });
+            });
+        </script>
     </body>
 </html>
 
