@@ -6,3 +6,7 @@
 .list-course .checkbox {
     margin-top:0;
 }
+
+.selected-course {
+    margin-bottom: 15px;
+}
