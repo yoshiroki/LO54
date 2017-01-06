@@ -43,7 +43,7 @@ public class Client {
     private String email;
     
     @OneToMany
-    @JoinColumn(name="COURSE_SESSION", referencedColumnName="id")
+    @JoinColumn(name="LIST_CLIENTS", referencedColumnName="id")
     private Collection<Course_session> courseSession;
 
     public Client(String lastName, String firstName, String address, String phone, Collection<Course_session> courseSession) {
