@@ -37,13 +37,8 @@ public class AddCourseSessionController {
     @RequestMapping(value = "", method = POST)
     public ModelAndView listCourse( @RequestParam("selectCourse") List<String> data, Model model) {
         
-        System.out.println(data);
         Iterable<String> selectedCourse = data;
-        
-//        Iterable<Course_session> listSession = courseSessionService.getAllCoursesSession();
 
-
-//        model.addAttribute("listLocation",  listLocation);
         model.addAttribute("selectedCourse", selectedCourse);
         return new ModelAndView("addCourseSession", model.asMap());
     } 

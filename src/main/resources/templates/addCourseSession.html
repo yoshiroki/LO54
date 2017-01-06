@@ -65,7 +65,7 @@
                             <input type="text" class="form-control" id="address" placeholder="Adresse" name="address"/>
                         </div>
 
-                        <!--<input th:each="course ${selectedCourse}" th:value="*{course}" type="hidden" name="selectCourse"/>-->
+                        <input th:each="course: ${selectedCourse}" th:value="*{course}" type="hidden" name="selectCourse"/>
 
                         <button type="submit" class="btn btn-default"><a href="listCourse"> Annuler</a></button>
                         <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> S'inscrire</button>
