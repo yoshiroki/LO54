@@ -8,6 +8,8 @@ package com.utbm.formation.controller;
 import com.utbm.lo54.service.CourseService;
 import com.utbm.lo54.service.CourseSessionService;
 import com.utbm.lo54.service.LocationService;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,11 +37,20 @@ public class AddCourseSessionController {
     LocationService locationService;
     
     @RequestMapping(value = "", method = POST)
-    public ModelAndView listCourse( @RequestParam("selectCourse") List<String> data, Model model) {
-        
+    public ModelAndView listCourse( @RequestParam("selectCourse") List<String> data, Model model) {    
         Iterable<String> selectedCourse = data;
-
+        
+        ArrayList<String> scName = new ArrayList<String>();
+        Iterator it = data.iterator();
+        while(it.hasNext()) {
+            String next = (String) it.next();
+            System.out.println(next);
+            scName.add(next);
+        }         
+        Iterable<String> selectedCourseName = scName;
+        
         model.addAttribute("selectedCourse", selectedCourse);
+        model.addAttribute("selectedCourseName", selectedCourseName);
         return new ModelAndView("addCourseSession", model.asMap());
     } 
 }
