@@ -5,10 +5,15 @@
  */
 package com.utbm.formation.controller;
 
+import com.utbm.lo54.entity.Course;
+import com.utbm.lo54.entity.Course_session;
+import com.utbm.lo54.entity.Location_course;
 import com.utbm.lo54.service.CourseService;
 import com.utbm.lo54.service.CourseSessionService;
 import com.utbm.lo54.service.LocationService;
+import java.text.ParseException;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
