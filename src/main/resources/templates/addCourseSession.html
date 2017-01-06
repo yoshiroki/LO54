@@ -38,7 +38,7 @@
 
                 <h4>Cours sélectionné</h4>
                 <div class="selected-course">
-                    <span class="badge" th:text="${selectedCourseName}">
+                    <span class="badge" th:each="courseName: ${selectedCourseName}" th:text="${courseName.key.courseCode.title}" >
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>                            
                     </span>
                 </div>

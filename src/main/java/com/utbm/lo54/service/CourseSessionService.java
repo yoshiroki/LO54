@@ -16,7 +16,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import static java.util.stream.Collectors.toConcurrentMap;
+import java.util.stream.IntStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,58 +37,72 @@ public class CourseSessionService {
 
     @Autowired
     private CourseRepository courseRepository;
-    
+
     @Autowired
     private LocationRepository locationRepository;
-    
-    
-    
-    public Iterable<Course_session> getAllCoursesSession(){
+
+    public Iterable<Course_session> getAllCoursesSession() {
         return courseSessionRepository.findAll();
     }
 
-    
     public Iterable<Course_session> getCourseSessionFilter(BeanCourseFilter bean) throws ParseException {
-        
-            Date dateStart=null;
-            Date dateEnd=null;
-          
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-            if(bean.getDateStartCourse() != "")
-                dateStart = formatter.parse(bean.getDateStartCourse());
-            if(bean.getDateEndCourse()!= "")
-                dateEnd = formatter.parse(bean.getDateEndCourse());
-            
-            Collection<Course> courses = null;
-            Collection<Location_course> locations = null;
-            
-            if(bean.getCourse()==null)
-                courses = (Collection<Course>) courseRepository.findAll();
-            else
-                courses = (Collection<Course>) courseRepository.findAll(bean.getCourse());
 
-            if(bean.getLocation()==null)
-                    locations = (Collection<Location_course>) locationRepository.findAll();
-                else
-                    locations = (Collection<Location_course>) locationRepository.findByIdIn(bean.getLocation());
-            
-            System.out.println(bean.getLocation());
-            System.out.println(locations);
-            
-            if(dateEnd != null && dateStart !=null)
-                return courseSessionRepository.findByCourseCodeInAndLocationInAndStartDateLikeAndEndDateLike(courses, locations, dateStart, dateEnd);
-            else if(dateEnd != null && dateStart ==null)
-                 return courseSessionRepository.findByCourseCodeInAndLocationInAndEndDate(courses, locations,  dateEnd);
-                else if(dateEnd == null && dateStart !=null)
-                                 return courseSessionRepository.findByCourseCodeInAndLocationInAndStartDate(courses, locations,  dateStart);
+        Date dateStart = null;
+        Date dateEnd = null;
 
-            return courseSessionRepository.findByCourseCodeInAndLocationIn(courses, locations);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        if (bean.getDateStartCourse() != "") {
+            dateStart = formatter.parse(bean.getDateStartCourse());
+        }
+        if (bean.getDateEndCourse() != "") {
+            dateEnd = formatter.parse(bean.getDateEndCourse());
+        }
 
+        Collection<Course> courses = null;
+        Collection<Location_course> locations = null;
 
-   
+        if (bean.getCourse() == null) {
+            courses = (Collection<Course>) courseRepository.findAll();
+        } else {
+            courses = (Collection<Course>) courseRepository.findAll(bean.getCourse());
+        }
+
+        if (bean.getLocation() == null) {
+            locations = (Collection<Location_course>) locationRepository.findAll();
+        } else {
+            locations = (Collection<Location_course>) locationRepository.findByIdIn(bean.getLocation());
+        }
+
+        System.out.println(bean.getLocation());
+        System.out.println(locations);
+
+        if (dateEnd != null && dateStart != null) {
+            return courseSessionRepository.findByCourseCodeInAndLocationInAndStartDateLikeAndEndDateLike(courses, locations, dateStart, dateEnd);
+        } else if (dateEnd != null && dateStart == null) {
+            return courseSessionRepository.findByCourseCodeInAndLocationInAndEndDate(courses, locations, dateEnd);
+        } else if (dateEnd == null && dateStart != null) {
+            return courseSessionRepository.findByCourseCodeInAndLocationInAndStartDate(courses, locations, dateStart);
+        }
+
+        return courseSessionRepository.findByCourseCodeInAndLocationIn(courses, locations);
+
     }
-    
-    public List<String> getSessionNameById() {
-        return null;
+
+    public Map<Course_session, Integer> getSessionNameById(List<Integer> id) {
+        Collection<Course_session> col = courseSessionRepository.findByIdIn(id);
+
+        Iterator<Course_session> iter = col.iterator();
+
+        Map<Course_session, Integer> map
+                = IntStream.range(0, col.size())
+                .parallel()
+                .boxed()
+                .collect(toConcurrentMap(i -> {
+                    synchronized (iter) {
+                        return iter.next();
+                    }
+                },
+                        i -> i));
+        return map;
     }
 }
