@@ -46,11 +46,12 @@ public class Client {
     @JoinColumn(name="LIST_CLIENTS", referencedColumnName="id")
     private Collection<Course_session> courseSession;
 
-    public Client(String lastName, String firstName, String address, String phone, Collection<Course_session> courseSession) {
+    public Client(String lastName, String firstName, String address, String phone, String email, Collection<Course_session> courseSession) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.address = address;
         this.phone = phone;
+        this.email = email;
         this.courseSession = courseSession;
     }
     

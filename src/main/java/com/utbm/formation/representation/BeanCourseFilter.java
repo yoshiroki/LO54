@@ -3,12 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.utbm.formation.controller;
+package com.utbm.formation.representation;
 
 import java.util.List;
 
 /**
- *
+ * Bean for the filter in the session page choice
+ * The bean will contain the information :
+ * course : List of course
+ * location : Id of the location of the course session
+ * dateStartCourse : when the course session start
+ * dateEndCourse : when the course session end
  * @author jnoblat
  */
 public class BeanCourseFilter {

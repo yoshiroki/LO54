@@ -5,7 +5,7 @@
  */
 package com.utbm.lo54.service;
 
-import com.utbm.formation.controller.BeanCourseFilter;
+import com.utbm.formation.representation.BeanCourseFilter;
 import com.utbm.lo54.entity.Course;
 import com.utbm.lo54.entity.Course_session;
 import com.utbm.lo54.entity.Location_course;
