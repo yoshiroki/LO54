@@ -22,10 +22,21 @@ public class BeanValidInsertSession {
     private String lastName;
     private String email;
     private String address;
+    private String phone;
 
     public BeanValidInsertSession() {
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    
+    
     public List<Integer> getSelectCourse() {
         return selectCourse;
     }

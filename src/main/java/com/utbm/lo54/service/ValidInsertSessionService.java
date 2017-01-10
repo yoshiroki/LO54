@@ -30,7 +30,7 @@ public class ValidInsertSessionService {
      */
     public void saveClientFromValidSession(BeanValidInsertSession bean) {
         
-        Client client = new Client(bean.getLastName(), bean.getFirstName(), bean.getAddress(), "fef",bean.getEmail(), courseSessionRepository.findByIdIn(bean.getSelectCourse()));
+        Client client = new Client(bean.getLastName(), bean.getFirstName(), bean.getAddress(), bean.getPhone(),bean.getEmail(), courseSessionRepository.findByIdIn(bean.getSelectCourse()));
         
         clientRepository.save(client);
     }
