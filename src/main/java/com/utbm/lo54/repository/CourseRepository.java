@@ -9,7 +9,7 @@ import com.utbm.lo54.entity.Course;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- *
+ * Repository de l'entity course
  * @author jnoblat
  */
 public interface CourseRepository extends CrudRepository<Course, String> {

@@ -16,7 +16,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- *
+ * Service de fonction
  * @author jnoblat
  */
 @Service
@@ -45,6 +44,12 @@ public class CourseSessionService {
         return courseSessionRepository.findAll();
     }
 
+    /**
+     * Retourne la liste des sessions filtrées
+     * @param bean les différents filtre
+     * @return une liste de session
+     * @throws ParseException 
+     */
     public Iterable<Course_session> getCourseSessionFilter(BeanCourseFilter bean) throws ParseException {
 
         Date dateStart = null;
@@ -88,6 +93,11 @@ public class CourseSessionService {
 
     }
 
+    /**
+     * Retourne les noms sessions par id
+     * @param id
+     * @return une liste de nom de session
+     */
     public Map<Course_session, Integer> getSessionNameById(List<Integer> id) {
         Collection<Course_session> col = courseSessionRepository.findByIdIn(id);
 

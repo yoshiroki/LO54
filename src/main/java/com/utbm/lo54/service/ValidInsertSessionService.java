@@ -13,10 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- *
+ * Service de fonction pour la validation 
  * @author jnoblat
  */
-
 @Service
 public class ValidInsertSessionService {
     @Autowired
@@ -25,7 +24,10 @@ public class ValidInsertSessionService {
     @Autowired
     private CourseSessionRepository courseSessionRepository;
     
-    
+    /**
+     * Sauvegarde un client et ces sessions sélectionnées
+     * @param bean Représente le client et les cours sélectionés
+     */
     public void saveClientFromValidSession(BeanValidInsertSession bean) {
         
         Client client = new Client(bean.getLastName(), bean.getFirstName(), bean.getAddress(), "fef",bean.getEmail(), courseSessionRepository.findByIdIn(bean.getSelectCourse()));

@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- *
+ * Entity représentant un client (étudiant)
  * @author jnoblat
  */
 @Entity
@@ -118,5 +118,10 @@ public class Client {
 
     public void setCourseSession(Collection<Course_session> courseSession) {
         this.courseSession = courseSession;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" + "id=" + id + ", lastName=" + lastName + ", firstName=" + firstName + ", address=" + address + ", phone=" + phone + ", email=" + email + ", courseSession=" + courseSession + '}';
     }
 }

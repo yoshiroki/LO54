@@ -13,7 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- *
+ * Entity représentant le lieux d'un cours
  * @author jnoblat
  */
 @Entity
@@ -49,5 +49,9 @@ public class Location_course {
     public void setCity(String city) {
         this.city = city;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Location_course{" + "id=" + id + ", city=" + city + '}';
+    }
 }

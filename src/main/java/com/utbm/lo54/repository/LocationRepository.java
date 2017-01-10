@@ -10,11 +10,16 @@ import java.util.Collection;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- *
+ * Repository de l'entity Location
  * @author jnoblat
  */
 public interface LocationRepository extends CrudRepository<Location_course, String> {
     
-          Iterable<Location_course> findByIdIn(Collection<Integer> id);
+    /**
+     * La liste des locations pour une liste d'ID 
+     * @param id 
+     * @return La liste des locations
+     */
+    Iterable<Location_course> findByIdIn(Collection<Integer> id);
 
 }

@@ -9,8 +9,6 @@ import com.utbm.lo54.entity.Course_session;
 import com.utbm.lo54.service.CourseService;
 import com.utbm.lo54.service.CourseSessionService;
 import com.utbm.lo54.service.LocationService;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- *
+ * Controller de la page d'ajout des informations de l'étudiant
  * @author jnoblat
  */
 @Controller
@@ -38,6 +36,12 @@ public class AddCourseSessionController {
     @Autowired
     LocationService locationService;
     
+    /**
+     * Ajout des sessions sélectionnées et affichage du formulaire d'ajout des infos étudiants²
+     * @param data Liste des sessions sélectionnés
+     * @param model Le model des données
+     * @return Retourne la liste des sessions sélectionnés avec leur nom
+     */
     @RequestMapping(value = "", method = POST)
     public ModelAndView listCourse( @RequestParam("selectCourse") List<Integer> data, Model model) {    
         Iterable<Integer> selectedCourse = data;

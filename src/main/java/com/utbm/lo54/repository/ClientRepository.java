@@ -9,7 +9,7 @@ import com.utbm.lo54.entity.Client;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- *
+ * Repository de l'entity client
  * @author jnoblat
  */
 public interface ClientRepository extends CrudRepository<Client, String> {

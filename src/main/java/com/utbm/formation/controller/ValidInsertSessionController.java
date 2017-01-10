@@ -16,7 +16,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- *
+ * Controller de la page de validation de l'inscription à une session
  * @author jnoblat
  */
 @Controller
@@ -26,11 +26,16 @@ public class ValidInsertSessionController {
     @Autowired
     ValidInsertSessionService validInsertSessionService;
     
+    /**
+     * Ajout d'un client à une/des sessions sélectionnées
+     * @param itemid Les informations du client et les sessions sélectionnées
+     * @param model Le model des données
+     * @return Retourne la validation de l'inscription
+     */
     @RequestMapping(value = "", method = POST)
     public ModelAndView listCourse( @Valid BeanValidInsertSession itemid, Model model) {
         
         validInsertSessionService.saveClientFromValidSession(itemid);
         return new ModelAndView("validInsertSession", model.asMap());
     }
- 
 }

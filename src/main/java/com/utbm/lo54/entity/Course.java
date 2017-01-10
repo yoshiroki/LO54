@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- *
+ * Entity représentant un un cours
  * @author jnoblat
  */
 @Entity
@@ -28,8 +28,7 @@ public class Course {
         this.title = title;
     }
     public Course() {
-    }
-    
+    }    
 
     public String getCode() {
         return code;
@@ -45,5 +44,10 @@ public class Course {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" + "code=" + code + ", title=" + title + '}';
     }
 }

@@ -16,7 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
- *
+ * Entity représentant la session d'un cours
  * @author jnoblat
  */
 @Entity
@@ -90,6 +90,9 @@ public class Course_session {
     public void setLocation(Location_course location) {
         this.location = location;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Course_session{" + "id=" + id + ", startDate=" + startDate + ", endDate=" + endDate + ", courseCode=" + courseCode + ", location=" + location + '}';
+    }
 }

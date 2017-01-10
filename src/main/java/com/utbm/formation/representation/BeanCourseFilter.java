@@ -57,5 +57,9 @@ public class BeanCourseFilter {
         this.dateEndCourse = dateEndCourse;
     }
 
+    @Override
+    public String toString() {
+        return "BeanCourseFilter{" + "course=" + course + ", location=" + location + ", dateStartCourse=" + dateStartCourse + ", dateEndCourse=" + dateEndCourse + '}';
+    }
 
 }

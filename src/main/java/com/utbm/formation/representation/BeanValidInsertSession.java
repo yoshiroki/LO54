@@ -70,7 +70,4 @@ public class BeanValidInsertSession {
     public String toString() {
         return "BeanValidInsertSession{" + "selectCourse=" + selectCourse + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", address=" + address + '}';
     }
-
-   
-
 }
